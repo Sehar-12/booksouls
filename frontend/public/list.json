@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "name": "Story Book",
+        "title": "In a city where love is forbidden, two strangers find solace in stolen moments, unaware that their connection could ignite a revolution.",
+        "price": 0,
+        "category": "Free",
+        "image": "../../public/books.png"
+    },
+    {
+        "id": 2,
+        "name": "Comedy Book",
+        "title": "In a city where love is forbidden, two strangers find solace in stolen moments, unaware that their connection could ignite a revolution.",
+        "price": 0,
+        "category": "Entertainment",
+        "image": "../../public/books.png"
+    },
+    
+    {
+        "id": 3,
+        "name": "Sports Book",
+        "title": "In a city where love is forbidden, two strangers find solace in stolen moments, unaware that their connection could ignite a revolution.",
+        "price": 50,
+        "category": "Sports",
+        "image": "../../public/books.png"
+    
+    },
+    {
+        "id": 4,
+        "name": "Music Book",
+        "title": "In a city where love is forbidden, two strangers find solace in stolen moments, unaware that their connection could ignite a revolution.",
+        "price": 100,
+        "category": "Music",
+        "image": "../../public/books.png"
+    },
+    {
+        "id": 5,
+        "name": "Story Book",
+        "title": "In a city where love is forbidden, two strangers find solace in stolen moments, unaware that their connection could ignite a revolution.",
+        "price": 0,
+        "category": "Free",
+        "image": "../../public/books.png"
+    },
+    {
+        "id": 6,
+        "name": "Story Book",
+        "title": "In a city where love is forbidden, two strangers find solace in stolen moments, unaware that their connection could ignite a revolution.",
+        "price": 0,
+        "category": "Free",
+        "image": "../../public/books.png"
+    },
+    {
+        "id": 7,
+        "name": "Story Book",
+        "title": "In a city where love is forbidden, two strangers find solace in stolen moments, unaware that their connection could ignite a revolution.",
+        "price": 0,
+        "category": "Free",
+        "image": "../../public/books.png"
+    },
+    {
+        "id": 8,
+        "name": "Story Book",
+        "title": "In a city where love is forbidden, two strangers find solace in stolen moments, unaware that their connection could ignite a revolution.",
+        "price": 0,
+        "category": "Free",
+        "image": "../../public/books.png"
+    },
+    {
+        "id": 9,
+        "name": "Food Book",
+        "title": "In a city where love is forbidden, two strangers find solace in stolen moments, unaware that their connection could ignite a revolution.",
+        "price": 200,
+        "category": "Free",
+        "image": "../../public/books.png"
+    },
+    {
+        "id": 10,
+        "name": "Story Book",
+        "title": "In a city where love is forbidden, two strangers find solace in stolen moments, unaware that their connection could ignite a revolution.",
+        "price": 0,
+        "category": "Free",
+        "image": "../../public/books.png"
+    },
+    {
+        "id": 11,
+        "name": "Fantasy Book",
+        "title": "In a city where love is forbidden, two strangers find solace in stolen moments, unaware that their connection could ignite a revolution.",
+        "price": 0,
+        "category": "Free",
+        "image": "../../public/books.png"
+    }
+]
