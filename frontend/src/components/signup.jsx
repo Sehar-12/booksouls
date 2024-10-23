@@ -36,7 +36,7 @@ function Signup() {
    })
   };
   return (
-    <div className="mx-2 sm:mx-20 md:mx-30 my-5 lg:mx-40 xl:mx-80 my-20 border-2 w-full max-w-[700px] h-[540px] rounded shadow-lg flex flex-col md:flex-row">
+    <div className="mx-2 sm:mx-10 md:mx-30 my-5 lg:mx-40 xl:mx-80 my-20 border-2 w-full max-w-[700px] h-[540px] rounded shadow-lg flex flex-col md:flex-row">
       {/* Form Section */} {/* Image Section */}
       <div className="flex-1 p-7 hidden md:block">
         <img
