@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addItemToCart } from '../store/CartSlice';
-
+import {Link} from 'react-router-dom'
 function Cards({ item }) {
   const dispatch = useDispatch();
 
@@ -11,8 +11,10 @@ function Cards({ item }) {
 
   return (
     <div className='mt-4 my-3 p-3'>
+      
       <div className="card bg-base-100  h-full shadow-xl hover:scale-105 transition duration-200 dark:bg-slate-800 dark:text-white dark:border">
         <div className="relative w-full h-48">
+        <Link to={`/Bookover/${item._id}`}>
           <img
             src={item.image}
             alt={item.title}
@@ -22,6 +24,7 @@ function Cards({ item }) {
               e.target.src = '/path/to/fallback/image.png'; // Fallback image path
             }}
           />
+          </Link>
         </div>
         <div className="mt-[100px] card-body flex flex-col justify-between h-full">
           <h2 className="card-title dark:text-white">
@@ -40,6 +43,7 @@ function Cards({ item }) {
           </div>
         </div>
       </div>
+     
     </div>
   );
 }

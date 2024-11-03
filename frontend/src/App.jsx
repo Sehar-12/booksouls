@@ -8,6 +8,7 @@ import Cart from './components/cart';
 import toast, { Toaster } from 'react-hot-toast';
 import { useAuth } from './context/AuthProvider';
 import Checkout from './components/checkout';
+import Bookover from './components/bookover';
 export default function App() {
   const [authUser,setAuthUser]=useAuth()
   console.log(authUser);
@@ -21,6 +22,8 @@ export default function App() {
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Cart" element={authUser?<Cart />:<Navigate to="/signup"/>} />
         <Route path="/Checkout" element={<Checkout/>}/>
+        <Route path="/Bookover/:bookId" element={<Bookover />} />
+
       </Routes>
       <Toaster />
     </div>

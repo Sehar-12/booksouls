@@ -53,7 +53,7 @@ function Cart() {
         {cartItems.map((item) => (
           <li key={item.id} className="flex items-center justify-between py-4">
             <div className="flex items-center">
-              <img src={item.image} alt={item.title} className="w-20 h-20 object-cover mr-4" />
+              <img src={item.image} alt={item.title} className="w-30 h-40 object-cover mr-4" />
               <div className="flex flex-col">
                 <strong className="text-lg">{item.title}</strong>
                 <div className="text-sm text-gray-600">${item.price ? item.price.toFixed(2) : '0.00'}</div>
