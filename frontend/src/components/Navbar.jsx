@@ -1,29 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import { useAuth } from '../context/AuthProvider';
-import Logout from './Logout';
-import { useSelector } from 'react-redux'; // Import useSelector
+import React, { useState, useEffect } from "react";
+import { useAuth } from "../context/AuthProvider";
+import Logout from "./Logout";
+import { useSelector } from "react-redux"; // Import useSelector
 
-function Navbar() {
+function Navbar({ onSearchChange }) {
   const [authUser, setAuthUser] = useAuth();
+  const handleChange = (e) => {
+    console.log("search text", e);
+    onSearchChange(e.target.value); // Call the passed function to update searchTerm
+  };
   console.log(authUser);
-  const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light');
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
   const element = document.documentElement;
 
   const cartItems = useSelector((state) => state.cart.items); // Get cart items from Redux
   const cartCount = cartItems.length; // Calculate the total number of items in the cart
 
   useEffect(() => {
-    if (theme === 'dark') {
-      element.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-      document.body.classList.add('dark');
-      document.body.style.margin = '0'; // Ensures no white gaps
-      document.body.style.backgroundColor = '#1E293B'; // Adjust background to dark slate
+    if (theme === "dark") {
+      element.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+      document.body.classList.add("dark");
+      document.body.style.margin = "0"; // Ensures no white gaps
+      document.body.style.backgroundColor = "#1E293B"; // Adjust background to dark slate
     } else {
-      element.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-      document.body.classList.remove('dark');
-      document.body.style.backgroundColor = ''; // Reset background
+      element.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+      document.body.classList.remove("dark");
+      document.body.style.backgroundColor = ""; // Reset background
     }
   }, [theme]);
 
@@ -37,9 +43,9 @@ function Navbar() {
         setSticky(false);
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -49,20 +55,40 @@ function Navbar() {
         e.preventDefault();
       }
     };
-    window.addEventListener('scrollX', handleScrollx);
+    window.addEventListener("scrollX", handleScrollx);
     return () => {
-      window.removeEventListener('scrollX', handleScrollx);
+      window.removeEventListener("scrollX", handleScrollx);
     };
   }, []);
 
   const navItems = (
     <>
-      <li><a href="/">Home</a></li>
-      <li><a href="/Books">Books</a></li>
-      <li><a href="/Cart">Cart  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20" fill="currentColor" className="bi bi-cart2" viewBox="0 0 16 16">
-  <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
-</svg><span className='text-red-500'>{cartCount}</span></a></li> {/* Update the cart count here */}
-      <li><a>About</a></li>
+      <li>
+        <a href="/">Home</a>
+      </li>
+      <li>
+        <a href="/Books">Books</a>
+      </li>
+      <li>
+        <a href="/Cart">
+          Cart{" "}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="20"
+            fill="currentColor"
+            className="bi bi-cart2"
+            viewBox="0 0 16 16"
+          >
+            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
+          </svg>
+          <span className="text-red-500">{cartCount}</span>
+        </a>
+      </li>{" "}
+      {/* Update the cart count here */}
+      <li>
+        <a>About</a>
+      </li>
     </>
   );
 
@@ -71,14 +97,18 @@ function Navbar() {
       <div
         className={`max-w-screen-2xl container mx-auto md:px-20 px-4 fixed top-0 left-0 right-0 z-50 dark:bg-slate-800 dark:text-white ${
           sticky
-            ? 'shadow-md bg-base-200 dark:bg-slate-700 transition-all duration-300 ease-in-out'
-            : ''
+            ? "shadow-md bg-base-200 dark:bg-slate-700 transition-all duration-300 ease-in-out"
+            : ""
         }`}
       >
         <div className="navbar">
           <div className="navbar-start">
             <div className="dropdown">
-              <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost lg:hidden"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -115,6 +145,7 @@ function Navbar() {
                   type="text"
                   className="grow outline-none dark:bg-slate-900 dark:text-white"
                   placeholder="Search"
+                  onChange={handleChange}
                 />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -135,8 +166,8 @@ function Navbar() {
             <label className="swap swap-rotate">
               <input
                 type="checkbox"
-                checked={theme === 'dark'}
-                onChange={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+                checked={theme === "dark"}
+                onChange={() => setTheme(theme === "light" ? "dark" : "light")}
               />
 
               {/* Sun icon */}
@@ -145,9 +176,7 @@ function Navbar() {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
               >
-                <path
-                  d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"
-                />
+                <path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z" />
               </svg>
 
               {/* Moon icon */}
