@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addItemToCart } from '../store/CartSlice';
-
+import { Link } from 'react-router-dom';
 function StarIcon() {
     return (
         <svg
@@ -40,11 +40,11 @@ function BookOver() {
 
     const handleAddToCart = () => {
         if (book) {
-            dispatch(addItemToCart({ 
-                id: book.id, 
-                title: book.title, 
-                price: book.price, 
-                image: book.image 
+            dispatch(addItemToCart({
+                id: book.id,
+                title: book.title,
+                price: book.price,
+                image: book.image
             }));
         }
     };
@@ -52,7 +52,7 @@ function BookOver() {
     if (!book) return <div>Loading...</div>;
 
     return (
-        <div className="container mx-auto p-6 max-w-2xl">
+        <div className="container mx-auto p-6 max-w-2xl mt-20">
             <div className="bg-white shadow-lg rounded-lg overflow-hidden">
                 <img
                     src={book.image}
@@ -75,13 +75,14 @@ function BookOver() {
                     <p className="mt-4 text-gray-600">{book.description}</p>
                     <div className="mt-4 flex justify-between items-center">
                         <span className="text-lg font-bold">${book.price}</span>
-                        <button 
-                            onClick={handleAddToCart} 
-                            className="px-4 py-2 bg-black text-white rounded hover:bg-gray-800 transition duration-300"
-                        >
-                            Add to Cart
-                        </button>
                     </div>
+
+                    <button
+                        onClick={handleAddToCart}
+                        className="px-4 mr-7 mt-5 py-2 bg-black text-white rounded hover:bg-gray-800 transition duration-300"
+                    >
+                        Add to Cart
+                    </button>
                 </div>
             </div>
         </div>

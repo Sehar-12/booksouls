@@ -1,18 +1,30 @@
-import express from "express";
-import mongoose from "mongoose";
-import dotenv from "dotenv";
-import bookRoute from "./route/book.route.js";
-import userRoute from "./route/user.route.js";
+import express from 'express';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 import cors from 'cors';
+import path from 'path';  // Import path module
+import { fileURLToPath } from 'url';  // Import this function to handle ES modules
+
+// Routes
+import bookRoute from './route/book.route.js';
+import userRoute from './route/user.route.js';
 
 dotenv.config();
 const app = express();
+
+// Get current directory using fileURLToPath and import.meta.url
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);  // Now we can use __dirname
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
-const PORT = process.env.PORT || 4000;
+// Serve static files (including PDFs) from the "public/pdfs" folder
+app.use('/pdfs', express.static(path.join(__dirname, '../frontend/public', 'pdfs')));
+ // Serving the PDFs folder
+
+const PORT = process.env.PORT || 4001;
 const URI = process.env.MongoDBURI;
 
 // Connect to MongoDB
@@ -26,8 +38,8 @@ mongoose.connect(URI, {
 });
 
 // Set up routes
-app.use("/book", bookRoute);
-app.use("/user", userRoute);
+app.use('/book', bookRoute);
+app.use('/user', userRoute);
 
 // Start the server
 app.listen(PORT, () => {

@@ -87,7 +87,7 @@ function Cart() {
       </ul>
       <h3 className="font-bold text-lg mt-6 text-right">Total: ${calculateTotalPrice()}</h3>
       <div className="flex justify-center mt-8">
-       <Link to="/checkout">
+       <Link to="/payment">
         <button className='font-bold px-11 py-2 text-lg bg-black text-white rounded hover:bg-gray-800 transition duration-300'>
           Checkout
         </button>

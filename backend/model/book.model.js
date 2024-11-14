@@ -7,6 +7,7 @@ const bookSchema = new mongoose.Schema({
   genre: { type: String, required: true },
   image: { type: String, required: true },
   description: { type: String, required: true },
+  pdfFilename: { type: String, required: true },
 });
 
 // Create the book model
